@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة بيت الأخوة المحدودة لصيانة السيارات</title>
+    <style>
+        :root {
+            --primary: #0b3c5d;      /* الكحلي الداكن الرسمي للشعار */
+            --secondary: #328cc1;    /* الأزرق التقني المساعد */
+            --accent: #1d7a46;       /* الأخضر الزمردي للقيم والبرمجة */
+            --dark: #22252a;         /* رمادي فحمي للنصوص */
+            --light: #f4f7f6;        /* خلفية مريحة وعصرية */
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل العلوي */
+        nav {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            margin-right: 25px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .cta-btn {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 10px 22px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #145330;
+        }
+
+        /* القسم الترحيبي الرئيسي */
+        .hero {
+            background: linear-gradient(rgba(11, 60, 93, 0.92), rgba(11, 60, 93, 0.85)), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=1200') center/cover;
+            color: var(--white);
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 850px;
+            margin: 0 auto 35px auto;
+        }
+
+        /* شريط الإحصائيات والأرقام */
+        .stats {
+            background-color: var(--white);
+            padding: 40px 5%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: -50px;
+            border-radius: 10px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* قسم الخدمات */
+        .services {
+            padding: 90px 5%;
+            text-align: center;
+        }
+
+        .services h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+
+        .services-subtitle {
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border-top: 6px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: right;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .card.accent-border {
+            border-top-color: var(--accent);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 22px;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        /* قسم التميز التقني والأجهزة */
+        .tech-section {
+            background-color: #eef3f6;
+            padding: 70px 5%;
+            text-align: center;
+        }
+
+        .tech-section h2 {
+            color: var(--primary);
+            margin-bottom: 35px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tag {
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        /* تذييل الصفحة */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 60px 5% 30px 5%;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 8px;
+            display: inline-block;
+            font-size: 18px;
+        }
+
+        .footer-section p {
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: #d1dbe2;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            color: #a3b8c9;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">شركة بيت الأخوة</div>
+        <div class="nav-links">
+            <a href="#">الرئيسية</a>
+            <a href="#">خدماتنا</a>
+            <a href="#">التميز التقني</a>
+        </div>
+        <a href="tel:0507497683" class="cta-btn">اتصل بنا فوراً</a>
+    </nav>
+
+    <section class="hero">
+        <h1>شركة بيت الأخوة المحدودة لصيانة السيارات</h1>
+        <p>الوجهة الأولى الموثوقة في صيانة السيارات بالمملكة العربية السعودية. نقدم تجربة متكاملة تجمع بين الدقة في العمل، الشفافية في التعامل، والسرعة في الإنجاز من الاستقبال وحتى التسليم.</p>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">+25</div>
+            <div class="stat-label">عاماً من الخبرة والريادة (منذ 1990م)</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">4</div>
+            <div class="stat-label">فروع مراكز صيانة متكاملة مجهزة</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">+60</div>
+            <div class="stat-label">فنياً مختصاً وكفاءات محترفة</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">2</div>
+            <div class="stat-label">محل لبيع قطع الغيار الأصلية والمعتمدة</div>
+        </div>
+    </section>
+
+    <section class="services">
+        <h2>خدماتنا المتكاملة للأفراد والشركات</h2>
+        <p class="services-subtitle">بأيدي فريق فني متمكن وأجهزة تشخيص وصيانة حديثة تواكب أحدث ما توصلت إليه التقنية</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>الكهرباء والبرمجة</h3>
+                <p>حلول دقيقة في تشخيص الأعطال الكهربائية والبرمجية لجميع أنواع السيارات، برمجة الأداء والعزم واستجابة الدعسة وتحسين استهلاك الوقود، برمجة سيارات الديزل ومعالجة أنظمة البيئة، بالإضافة لخدمات البرمجة عن بعد لأي منطقة في العالم، وتقديم الاستشارات الفنية.</p>
+            </div>
+            <div class="card accent-border">
+                <h3>الميكانيكا والتوضيب</h3>
+                <p>خدمات متخصصة ومحترفة في أعمال الميكانيكا والتوضيب لمختلف أنواع المركبات، تشمل توضيب المحركات والقيرات، صيانة وإصلاح كافة الأعطال الميكانيكية، وإجراء الفحص الشامل بدقة متناهية وبأحدث المعدات والمعايير الفنية المعتمدة لضمان كفاءة الأداء.</p>
+            </div>
+            <div class="card">
+                <h3>السمكرة والدهان</h3>
+                <p>خدمات احترافية لإصلاح الأضرار وإعادة تأهيل هياكل السيارات بأعلى معايير الجودة، تشمل إصلاح الصدمات والخدوش، تعديل الهيكل الخارجي، وأعمال الدهان والرش المطابقة تماماً للون الأصلي للمركبة داخل أفران حرارية مخصصة لاستعادة المظهر بأفضل صورة.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-section">
+        <h2>الأنظمة والمبرمجات العالمية المعتمدة لدينا</h2>
+        <div class="tech-tags">
+            <div class="tag">Kess3</div>
+            <div class="tag">Flex</div>
+            <div class="tag">HPTuner</div>
+            <div class="tag">VVDI Prog</div>
+            <div class="tag">OBD Smart</div>
+            <div class="tag">GPROG</div>
+            <div class="tag">Autel</div>
+            <div class="tag">Launch</div>
+            <div class="tag">Thinktool</div>
+            <div class="tag">JAD</div>
+            <div class="tag">أجهزة الوكالات الأصلية (Toyota, GMC, Ford, Mazda)</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>عن المنشأة</h4>
+                <p>تأسست شركة بيت الأخوة المحدودة عام 1990م في المملكة العربية السعودية، ونجحت عبر مسيرتها الطويلة في بناء سمعة مرموقة قائمة على الجودة، الموثوقية، والاحترافية، لتصبح شريك النجاح الأبرز لكبرى القطاعات الحكومية والخاصة.</p>
+            </div>
+            <div class="footer-section">
+                <h4>بيانات الاتصال والمقرات</h4>
+                <p>📍 المقر الرئيسي: الرياض - النسيم الغربي - شارع عبدالله بن عمير</p>
+                <p>📞 رقم الجوال المباشر: 0507497683</p>
+                <p>✉️ البريد الإلكتروني الرسمي: Info@baytalkhwa.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 شركة بيت الأخوة المحدودة لصيانة السيارات. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+</body>
+</html>
