@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شركة بيت الأخوة المحدودة لصيانة السيارات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0b3c5d;      /* الكحلي الداكن الرسمي للشعار */
-            --secondary: #328cc1;    /* الأزرق التقني المساعد */
-            --accent: #1d7a46;       /* الأخضر الزمردي للقيم والبرمجة */
-            --dark: #22252a;         /* رمادي فحمي للنصوص */
-            --light: #f4f7f6;        /* خلفية مريحة وعصرية */
+            --primary: #0b3c5d;      /* الكحلي الداكن للشعار */
+            --secondary: #328cc1;    /* الأزرق التقني */
+            --accent: #1d7a46;       /* الأخضر الزمردي للقيم */
+            --dark: #1e2229;         /* نصوص داكنة مريحة */
+            --light: #f8fafb;        /* خلفية الموقع العامة */
             --white: #ffffff;
         }
 
@@ -18,90 +19,100 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--light);
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         /* شريط التنقل العلوي */
         nav {
             background-color: var(--white);
-            padding: 15px 5%;
+            padding: 10px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--primary);
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 65px; /* حجم مناسب للوجو الرسمي */
+            width: auto;
         }
 
         .nav-links a {
             color: var(--dark);
             text-decoration: none;
-            margin-right: 25px;
-            font-weight: 600;
+            margin-right: 30px;
+            font-weight: 700;
+            font-size: 15px;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--secondary);
         }
 
         .cta-btn {
             background-color: var(--accent);
             color: var(--white);
-            padding: 10px 22px;
-            border-radius: 5px;
+            padding: 10px 24px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s;
+            box-shadow: 0 4px 10px rgba(29, 122, 70, 0.2);
+            transition: all 0.3s;
         }
 
         .cta-btn:hover {
             background-color: #145330;
+            transform: translateY(-2px);
         }
 
         /* القسم الترحيبي الرئيسي */
         .hero {
-            background: linear-gradient(rgba(11, 60, 93, 0.92), rgba(11, 60, 93, 0.85)), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=1200') center/cover;
+            background: linear-gradient(rgba(11, 60, 93, 0.94), rgba(11, 60, 93, 0.88)), url('hero-bg.jpg') center/cover;
             color: var(--white);
-            padding: 120px 20px;
+            padding: 140px 20px 160px 20px;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 46px;
+            font-size: 44px;
+            font-weight: 900;
             margin-bottom: 20px;
         }
 
         .hero p {
-            font-size: 19px;
-            max-width: 850px;
+            font-size: 20px;
+            max-width: 900px;
             margin: 0 auto 35px auto;
+            color: #e2ebf0;
         }
 
-        /* شريط الإحصائيات والأرقام */
+        /* شريط الأرقام والإحصائيات */
         .stats {
             background-color: var(--white);
-            padding: 40px 5%;
+            padding: 35px 5%;
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-top: -50px;
-            border-radius: 10px;
-            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-top: -60px;
+            border-radius: 12px;
+            width: 84%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -109,59 +120,100 @@
         .stat-item {
             text-align: center;
             padding: 15px;
-            min-width: 200px;
+            min-width: 180px;
         }
 
         .stat-number {
-            font-size: 36px;
-            font-weight: bold;
+            font-size: 40px;
+            font-weight: 900;
             color: var(--primary);
         }
 
         .stat-label {
             font-size: 14px;
-            color: #555;
-            margin-top: 5px;
-            font-weight: 500;
-        }
-
-        /* قسم الخدمات */
-        .services {
-            padding: 90px 5%;
-            text-align: center;
-        }
-
-        .services h2 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 32px;
-        }
-
-        .services-subtitle {
             color: #666;
-            margin-bottom: 50px;
+            margin-top: 5px;
+            font-weight: 700;
+        }
+
+        /* الأقسام العامة */
+        section {
+            padding: 100px 8% 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
             font-size: 16px;
         }
 
+        /* قسم من نحن والجوهر */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .about-box {
+            background-color: var(--white);
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border-right: 6px solid var(--secondary);
+        }
+
+        .about-box h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .values-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .value-tag {
+            background-color: #eef7f2;
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* قسم الخدمات الشاملة */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            gap: 35px;
         }
 
         .card {
             background-color: var(--white);
-            padding: 35px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
             border-top: 6px solid var(--primary);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: right;
+            transition: all 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
 
         .card.accent-border {
@@ -171,7 +223,8 @@
         .card h3 {
             margin-bottom: 15px;
             color: var(--primary);
-            font-size: 22px;
+            font-size: 24px;
+            font-weight: 800;
         }
 
         .card p {
@@ -182,14 +235,7 @@
 
         /* قسم التميز التقني والأجهزة */
         .tech-section {
-            background-color: #eef3f6;
-            padding: 70px 5%;
-            text-align: center;
-        }
-
-        .tech-section h2 {
-            color: var(--primary);
-            margin-bottom: 35px;
+            background-color: #f0f4f8;
         }
 
         .tech-tags {
@@ -197,46 +243,103 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .tag {
             background-color: var(--white);
             color: var(--primary);
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 30px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 14px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid #e1e8ed;
         }
 
-        /* تذييل الصفحة */
+        /* قسم معرض الأعمال الفعلي من الملف */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background-color: #ddd; /* تمثيل مكان الصورة */
+        }
+
+        .gallery-caption {
+            padding: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* قسم أبرز شركاء النجاح */
+        .partners-section {
+            background-color: var(--white);
+            padding-bottom: 80px;
+        }
+
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .partner-card {
+            background-color: #f8fafb;
+            padding: 15px 25px;
+            border-radius: 6px;
+            font-weight: 700;
+            color: #555;
+            font-size: 14px;
+            border: 1px dashed #cbd5e1;
+            text-align: center;
+            min-width: 160px;
+        }
+
+        /* تذييل الصفحة والمعلومات التفصيلية القانونية */
         footer {
             background-color: var(--primary);
             color: var(--white);
-            padding: 60px 5% 30px 5%;
-            margin-top: 60px;
+            padding: 80px 8% 40px 8%;
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 50px;
         }
 
         .footer-section {
             flex: 1;
-            min-width: 280px;
+            min-width: 300px;
         }
 
         .footer-section h4 {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-bottom: 3px solid var(--secondary);
             padding-bottom: 8px;
             display: inline-block;
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: 800;
         }
 
         .footer-section p {
@@ -247,8 +350,8 @@
 
         .footer-bottom {
             text-align: center;
-            padding-top: 25px;
-            margin-top: 40px;
+            padding-top: 30px;
+            margin-top: 50px;
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 13px;
             color: #a3b8c9;
@@ -258,28 +361,32 @@
 <body>
 
     <nav>
-        <div class="logo">شركة بيت الأخوة</div>
+        <div class="logo-container">
+            <img src="logo.png" alt="شركة بيت الأخوة" class="logo-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'stat-number\' style=\'font-size:22px;\'>شركة بيت الأخوة</span>'">
+        </div>
         <div class="nav-links">
             <a href="#">الرئيسية</a>
-            <a href="#">خدماتنا</a>
-            <a href="#">التميز التقني</a>
+            <a href="#about">من نحن</a>
+            <a href="#services">خدماتنا</a>
+            <a href="#gallery">معرض الأعمال</a>
+            <a href="#partners">شركاؤنا</a>
         </div>
         <a href="tel:0507497683" class="cta-btn">اتصل بنا فوراً</a>
     </nav>
 
     <section class="hero">
         <h1>شركة بيت الأخوة المحدودة لصيانة السيارات</h1>
-        <p>الوجهة الأولى الموثوقة في صيانة السيارات بالمملكة العربية السعودية. نقدم تجربة متكاملة تجمع بين الدقة في العمل، الشفافية في التعامل، والسرعة في الإنجاز من الاستقبال وحتى التسليم.</p>
+        <p>منذ انطلاقتنا عام 1990م، رسخنا مكانتنا كإحدى الشركات الرائدة في صيانة وإصلاح السيارات بالمملكة العربية السعودية، بخبرة تمتد لأكثر من 25 عاماً من الجودة والموثوقية.</p>
     </section>
 
     <section class="stats">
         <div class="stat-item">
             <div class="stat-number">+25</div>
-            <div class="stat-label">عاماً من الخبرة والريادة (منذ 1990م)</div>
+            <div class="stat-label">عاماً من الخبرة والريادة</div>
         </div>
         <div class="stat-item">
             <div class="stat-number">4</div>
-            <div class="stat-label">فروع مراكز صيانة متكاملة مجهزة</div>
+            <div class="stat-label">فروع مراكز صيانة متكاملة</div>
         </div>
         <div class="stat-item">
             <div class="stat-number">+60</div>
@@ -287,32 +394,60 @@
         </div>
         <div class="stat-item">
             <div class="stat-number">2</div>
-            <div class="stat-label">محل لبيع قطع الغيار الأصلية والمعتمدة</div>
+            <div class="stat-label">محل لبيع قطع الغيار الأصلية</div>
         </div>
     </section>
 
-    <section class="services">
-        <h2>خدماتنا المتكاملة للأفراد والشركات</h2>
-        <p class="services-subtitle">بأيدي فريق فني متمكن وأجهزة تشخيص وصيانة حديثة تواكب أحدث ما توصلت إليه التقنية</p>
+    <section id="about">
+        <h2 class="section-title">من نحن وجوهر العلامة التجارية</h2>
+        <p class="section-subtitle">رؤية واضحة تجمع بين الأداء المتقن والشفافية التامة لكسب ثقة عملائنا</p>
+        
+        <div class="about-grid">
+            <div class="about-box">
+                <h3>الرؤية</h3>
+                <p>أن نكون الخيار الأول والوجهة الموثوقة في صيانة السيارات بجودة عالية وتقنيات حديثة تواكب التطور المستمر.</p>
+            </div>
+            <div class="about-box">
+                <h3>الرسالة</h3>
+                <p>تقديم خدمات صيانة موثوقة وشاملة، بأيدي فريق فني محترف وأجهزة متطورة لضمان أعلى مستويات رضا العميل وأمان مركبتهم.</p>
+            </div>
+            <div class="about-box">
+                <h3>قيمنا الجوهرية</h3>
+                <div class="values-list">
+                    <span class="value-tag">الجودة</span>
+                    <span class="value-tag">الثقة</span>
+                    <span class="value-tag">الابتكار</span>
+                    <span class="value-tag">الراحة</span>
+                    <span class="value-tag">رضا العميل</span>
+                    <span class="value-tag">الالتزام</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="background-color: #f4f7f9;">
+        <h2 class="section-title">خدماتنا الشاملة للأفراد والشركات</h2>
+        <p class="section-subtitle">حلول متكاملة تغطي جميع جوانب الصيانة من الفحص والبرمجة وحتى السمكرة والدهان</p>
         
         <div class="grid">
             <div class="card">
                 <h3>الكهرباء والبرمجة</h3>
-                <p>حلول دقيقة في تشخيص الأعطال الكهربائية والبرمجية لجميع أنواع السيارات، برمجة الأداء والعزم واستجابة الدعسة وتحسين استهلاك الوقود، برمجة سيارات الديزل ومعالجة أنظمة البيئة، بالإضافة لخدمات البرمجة عن بعد لأي منطقة في العالم، وتقديم الاستشارات الفنية.</p>
+                <p>تشخيص دقيق لأعطال الكهرباء والبرمجة لجميع السيارات بأحدث أنظمة الفحص المعتمدة للتحكم وبرمجة الأداء والعزم واستجابة الدعسة وتحسين استهلاك الوقود، برمجة سيارات الديزل ومعالجة أنظمة البيئة، بالإضافة لخدمات البرمجة عن بعد لكافة أنحاء العالم وتقديم الاستشارات الفنية.</p>
             </div>
             <div class="card accent-border">
                 <h3>الميكانيكا والتوضيب</h3>
-                <p>خدمات متخصصة ومحترفة في أعمال الميكانيكا والتوضيب لمختلف أنواع المركبات، تشمل توضيب المحركات والقيرات، صيانة وإصلاح كافة الأعطال الميكانيكية، وإجراء الفحص الشامل بدقة متناهية وبأحدث المعدات والمعايير الفنية المعتمدة لضمان كفاءة الأداء.</p>
+                <p>خدمات احترافية متكاملة تحت إشراف فريق فني متمرس؛ تشمل توضيب المحركات والقيرات، صيانة وإصلاح الأعطال الميكانيكية الشاملة، وإجراء الفحوصات الدورية والدقيقة وفق أعلى المعايير الفنية والمعدات الحديثة لضمان كفاءة أداء السيارة العالية.</p>
             </div>
             <div class="card">
                 <h3>السمكرة والدهان</h3>
-                <p>خدمات احترافية لإصلاح الأضرار وإعادة تأهيل هياكل السيارات بأعلى معايير الجودة، تشمل إصلاح الصدمات والخدوش، تعديل الهيكل الخارجي، وأعمال الدهان والرش المطابقة تماماً للون الأصلي للمركبة داخل أفران حرارية مخصصة لاستعادة المظهر بأفضل صورة.</p>
+                <p>إعادة تأهيل وهياكل السيارات وإصلاح الصدمات والخدوش بدقة فائقة، وتعديل الهيكل الخارجي وأعمال الرش والدهان المطابقة تماماً للون السيارة الأصلي داخل أفران حرارية مخصصة تضمن استعادة المركبة لمظهرها الجمالي بأفضل صورة ممكنة.</p>
             </div>
         </div>
     </section>
 
     <section class="tech-section">
-        <h2>الأنظمة والمبرمجات العالمية المعتمدة لدينا</h2>
+        <h2 class="section-title">الأنظمة والمبرمجات العالمية المعتمدة</h2>
+        <p class="section-subtitle">نعتمد على التكنولوجيا الأحدث عالمياً لضمان الفحص الدقيق والآمن لسيارات الوكالات والأمريكي والأوروبي</p>
         <div class="tech-tags">
             <div class="tag">Kess3</div>
             <div class="tag">Flex</div>
@@ -328,16 +463,68 @@
         </div>
     </section>
 
+    <section id="gallery">
+        <h2 class="section-title">نماذج من أعمالنا وخدماتنا الموثقة</h2>
+        <p class="section-subtitle">جوانب حية من الخدمات المنفذة داخل مراكزنا بأعلى درجات الدقة والاحترافية</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="gallery1.jpg" alt="توضيب قير" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=400'">
+                <div class="gallery-caption">توضيب قير محترف</div>
+            </div>
+            <div class="gallery-item">
+                <img src="gallery2.jpg" alt="توضيب ماكينة" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=400'">
+                <div class="gallery-caption">توضيب ماكينات ومحركات</div>
+            </div>
+            <div class="gallery-item">
+                <img src="gallery3.jpg" alt="رش بوية فرن حراري" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=400'">
+                <div class="gallery-caption">رش بوية فرن حراري تجميلي</div>
+            </div>
+            <div class="gallery-item">
+                <img src="gallery4.jpg" alt="صيانة عضلات وتصفية شاملة" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=400'">
+                <div class="gallery-caption">صيانة عضلات المركبة وتصفية شاملة</div>
+            </div>
+            <div class="gallery-item">
+                <img src="gallery5.jpg" alt="إصلاح دائرة التكييف" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=400'">
+                <div class="gallery-caption">إصلاح وصيانة دوائر التكييف</div>
+            </div>
+            <div class="gallery-item">
+                <img src="gallery6.jpg" alt="فروع مراكز الصيانة" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?q=80&w=400'">
+                <div class="gallery-caption">تجهيزات مراكز الصيانة من الداخل</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners" class="partners-section">
+        <h2 class="section-title">أبرز شركاء نجاحنا</h2>
+        <p class="section-subtitle">نفخر بخدمة وثقة كبرى الجهات الحكومية والقطاعات الحيوية في المملكة العربية السعودية</p>
+        
+        <div class="partners-grid">
+            <div class="partner-card">وزارة الدفاع</div>
+            <div class="partner-card">وزارة الصحة</div>
+            <div class="partner-card">أمانة منطقة الرياض</div>
+            <div class="partner-card">هيئة الهلال الأحمر السعودي</div>
+            <div class="partner-card">أرامكو السعودية</div>
+            <div class="partner-card">الشركة السعودية للكهرباء</div>
+            <div class="partner-card">شركة المياه الوطنية</div>
+            <div class="partner-card">الخطوط الحديدية السعودية (SAR)</div>
+            <div class="partner-card">مجموعة stc</div>
+            <div class="partner-card">شركة موبايلي</div>
+            <div class="partner-card">أسواق العثيم</div>
+            <div class="partner-card">لافيرن (LAVERNE)</div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h4>عن المنشأة</h4>
-                <p>تأسست شركة بيت الأخوة المحدودة عام 1990م في المملكة العربية السعودية، ونجحت عبر مسيرتها الطويلة في بناء سمعة مرموقة قائمة على الجودة، الموثوقية، والاحترافية، لتصبح شريك النجاح الأبرز لكبرى القطاعات الحكومية والخاصة.</p>
+                <h4>عن الشركة وموثوقيتها القانونية</h4>
+                <p>شركة بيت الأخوة المحدودة هي منشأة رسمية ذات مسؤولية محدودة برأس مال مسجل قدره 1,000,000 ريال سعودي. مسجلة رسمياً وموثقة بشهادات ضريبة القيمة المضافة واشتراك الغرفة التجارية بالرياض وعنوان وطني معتمد لضمان أعلى درجات الموثوقية العقدية والقانونية للأفراد والشركات.</p>
             </div>
             <div class="footer-section">
                 <h4>بيانات الاتصال والمقرات</h4>
-                <p>📍 المقر الرئيسي: الرياض - النسيم الغربي - شارع عبدالله بن عمير</p>
-                <p>📞 رقم الجوال المباشر: 0507497683</p>
+                <p>📍 المقر الرئيسي: الرياض - النسيم الغربي - شارع عبدالله بن عمير 14230</p>
+                <p>📞 رقم الجوال المباشر للتواصل والمواعيد: 0507497683</p>
                 <p>✉️ البريد الإلكتروني الرسمي: Info@baytalkhwa.com</p>
             </div>
         </div>
