@@ -5,533 +5,313 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شركة بيت الأخوة المحدودة لصيانة السيارات</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        corporateBlue: '#0b3c5d',
+                        techGreen: '#1d7a46',
+                        accentBlue: '#328cc1',
+                        darkText: '#1e2229',
+                        lightBg: '#f8fafb',
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --primary: #0b3c5d;      /* الكحلي الداكن للشعار */
-            --secondary: #328cc1;    /* الأزرق التقني */
-            --accent: #1d7a46;       /* الأخضر الزمردي للقيم */
-            --dark: #1e2229;         /* نصوص داكنة مريحة */
-            --light: #f8fafb;        /* خلفية الموقع العامة */
-            --white: #ffffff;
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+        /* أنيميشن مخصص لشريط شركاء النجاح المتحرك بشكل لانهائي */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(100%); }
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.8;
-        }
-
-        /* شريط التنقل العلوي */
-        nav {
-            background-color: var(--white);
-            padding: 10px 8%;
+        .animate-marquee {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-img {
-            height: 65px; /* حجم مناسب للوجو الرسمي */
-            width: auto;
-        }
-
-        .nav-links a {
-            color: var(--dark);
-            text-decoration: none;
-            margin-right: 30px;
-            font-weight: 700;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary);
-        }
-
-        .cta-btn {
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 10px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(29, 122, 70, 0.2);
-            transition: all 0.3s;
-        }
-
-        .cta-btn:hover {
-            background-color: #145330;
-            transform: translateY(-2px);
-        }
-
-        /* القسم الترحيبي الرئيسي */
-        .hero {
-            background: linear-gradient(rgba(11, 60, 93, 0.94), rgba(11, 60, 93, 0.88)), url('hero-bg.jpg') center/cover;
-            color: var(--white);
-            padding: 140px 20px 160px 20px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 44px;
-            font-weight: 900;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 20px;
-            max-width: 900px;
-            margin: 0 auto 35px auto;
-            color: #e2ebf0;
-        }
-
-        /* شريط الأرقام والإحصائيات */
-        .stats {
-            background-color: var(--white);
-            padding: 35px 5%;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-top: -60px;
-            border-radius: 12px;
-            width: 84%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 15px;
-            min-width: 180px;
-        }
-
-        .stat-number {
-            font-size: 40px;
-            font-weight: 900;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
-            font-weight: 700;
-        }
-
-        /* الأقسام العامة */
-        section {
-            padding: 100px 8% 60px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--primary);
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto 60px auto;
-            font-size: 16px;
-        }
-
-        /* قسم من نحن والجوهر */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .about-box {
-            background-color: var(--white);
-            padding: 35px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            border-right: 6px solid var(--secondary);
-        }
-
-        .about-box h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        .values-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .value-tag {
-            background-color: #eef7f2;
-            color: var(--accent);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        /* قسم الخدمات الشاملة */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-        }
-
-        .card {
-            background-color: var(--white);
-            padding: 40px 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
-            border-top: 6px solid var(--primary);
-            transition: all 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-        }
-
-        .card.accent-border {
-            border-top-color: var(--accent);
-        }
-
-        .card h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-            font-size: 24px;
-            font-weight: 800;
-        }
-
-        .card p {
-            color: #555;
-            font-size: 15px;
-            text-align: justify;
-        }
-
-        /* قسم التميز التقني والأجهزة */
-        .tech-section {
-            background-color: #f0f4f8;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .tag {
-            background-color: var(--white);
-            color: var(--primary);
-            padding: 10px 22px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid #e1e8ed;
-        }
-
-        /* قسم معرض الأعمال الفعلي من الملف */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .gallery-item {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        .gallery-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background-color: #ddd; /* تمثيل مكان الصورة */
-        }
-
-        .gallery-caption {
-            padding: 15px;
-            font-weight: 700;
-            color: var(--primary);
-            text-align: center;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        /* قسم أبرز شركاء النجاح */
-        .partners-section {
-            background-color: var(--white);
-            padding-bottom: 80px;
-        }
-
-        .partners-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .partner-card {
-            background-color: #f8fafb;
-            padding: 15px 25px;
-            border-radius: 6px;
-            font-weight: 700;
-            color: #555;
-            font-size: 14px;
-            border: 1px dashed #cbd5e1;
-            text-align: center;
-            min-width: 160px;
-        }
-
-        /* تذييل الصفحة والمعلومات التفصيلية القانونية */
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 80px 8% 40px 8%;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 50px;
-        }
-
-        .footer-section {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 25px;
-            border-bottom: 3px solid var(--secondary);
-            padding-bottom: 8px;
-            display: inline-block;
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        .footer-section p {
-            font-size: 15px;
-            margin-bottom: 12px;
-            color: #d1dbe2;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 50px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 13px;
-            color: #a3b8c9;
+            animation: marquee 30s linear infinite;
         }
     </style>
 </head>
-<body>
+<body class="bg-lightBg text-darkText antialiased">
 
-    <nav>
-        <div class="logo-container">
-            <img src="logo.png" alt="شركة بيت الأخوة" class="logo-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'stat-number\' style=\'font-size:22px;\'>شركة بيت الأخوة</span>'">
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="شعار شركة بيت الأخوة" class="h-14 w-auto object-contain" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-corporateBlue font-black text-2xl\'>شركة بيت الأخوة</span>'">
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-darkText hover:text-accentBlue font-bold text-sm transition-colors">الرئيسية</a>
+                <a href="#about" class="text-darkText hover:text-accentBlue font-bold text-sm transition-colors">من نحن</a>
+                <a href="#services" class="text-darkText hover:text-accentBlue font-bold text-sm transition-colors">خدماتنا</a>
+                <a href="#tech" class="text-darkText hover:text-accentBlue font-bold text-sm transition-colors">التميز التقني</a>
+                <a href="#gallery" class="text-darkText hover:text-accentBlue font-bold text-sm transition-colors">معرض الأعمال</a>
+                <a href="#partners" class="text-darkText hover:text-accentBlue font-bold text-sm transition-colors">شركاؤنا</a>
+            </div>
+            <div>
+                <a href="tel:0507497683" class="bg-techGreen text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-md shadow-techGreen/20 hover:bg-emerald-800 hover:-translate-y-0.5 transition-all inline-block">اتصل بنا فوراً</a>
+            </div>
         </div>
-        <div class="nav-links">
-            <a href="#">الرئيسية</a>
-            <a href="#about">من نحن</a>
-            <a href="#services">خدماتنا</a>
-            <a href="#gallery">معرض الأعمال</a>
-            <a href="#partners">شركاؤنا</a>
-        </div>
-        <a href="tel:0507497683" class="cta-btn">اتصل بنا فوراً</a>
     </nav>
 
-    <section class="hero">
-        <h1>شركة بيت الأخوة المحدودة لصيانة السيارات</h1>
-        <p>منذ انطلاقتنا عام 1990م، رسخنا مكانتنا كإحدى الشركات الرائدة في صيانة وإصلاح السيارات بالمملكة العربية السعودية، بخبرة تمتد لأكثر من 25 عاماً من الجودة والموثوقية.</p>
-    </section>
-
-    <section class="stats">
-        <div class="stat-item">
-            <div class="stat-number">+25</div>
-            <div class="stat-label">عاماً من الخبرة والريادة</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">4</div>
-            <div class="stat-label">فروع مراكز صيانة متكاملة</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">+60</div>
-            <div class="stat-label">فنياً مختصاً وكفاءات محترفة</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">2</div>
-            <div class="stat-label">محل لبيع قطع الغيار الأصلية</div>
+    <section class="relative bg-corporateBlue text-white overflow-hidden py-32 lg:py-40">
+        <div class="absolute inset-0 bg-gradient-to-r from-corporateBlue/95 to-corporateBlue/80 z-10"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=1200')] bg-cover bg-center opacity-40"></div>
+        <div class="relative max-w-5xl mx-auto px-6 text-center z-20">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-6 leading-tight">شركة <span class="text-accentBlue">بيت الأخوة</span> المحدودة لصيانة السيارات</h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-10 font-medium">الوجهة الأولى الموثوقة في صيانة السيارات بالمملكة العربية السعودية. خبرة تمتد لأكثر من 25 عاماً نلتزم فيها بالدقة الفائقة في العمل، الشفافية المطلقة في التعامل، والسرعة الفائقة في الإنجاز.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#services" class="bg-accentBlue text-white px-8 py-3.5 rounded-lg font-bold shadow-lg hover:bg-sky-600 transition-all">استكشف خدماتنا</a>
+                <a href="tel:0507497683" class="bg-transparent border-2 border-white/40 text-white px-8 py-3.5 rounded-lg font-bold hover:bg-white/10 transition-all">اتصل بالدعم الفني</a>
+            </div>
         </div>
     </section>
 
-    <section id="about">
-        <h2 class="section-title">من نحن وجوهر العلامة التجارية</h2>
-        <p class="section-subtitle">رؤية واضحة تجمع بين الأداء المتقن والشفافية التامة لكسب ثقة عملائنا</p>
-        
-        <div class="about-grid">
-            <div class="about-box">
-                <h3>الرؤية</h3>
-                <p>أن نكون الخيار الأول والوجهة الموثوقة في صيانة السيارات بجودة عالية وتقنيات حديثة تواكب التطور المستمر.</p>
+    <section class="relative z-30 -mt-16 max-w-6xl mx-auto px-4">
+        <div class="bg-white rounded-2xl shadow-xl shadow-gray-200/80 p-8 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center border border-gray-100">
+            <div class="p-2">
+                <div class="text-3xl md:text-4xl font-black text-corporateBlue mb-1" data-target="25">+0</div>
+                <div class="text-xs md:text-sm font-bold text-gray-500">عاماً من الخبرة والريادة (منذ 1990م)</div>
             </div>
-            <div class="about-box">
-                <h3>الرسالة</h3>
-                <p>تقديم خدمات صيانة موثوقة وشاملة، بأيدي فريق فني محترف وأجهزة متطورة لضمان أعلى مستويات رضا العميل وأمان مركبتهم.</p>
+            <div class="p-2 border-r border-gray-100">
+                <div class="text-3xl md:text-4xl font-black text-corporateBlue mb-1" data-target="4">0</div>
+                <div class="text-xs md:text-sm font-bold text-gray-500">فروع مراكز صيانة متكاملة مجهزة</div>
             </div>
-            <div class="about-box">
-                <h3>قيمنا الجوهرية</h3>
-                <div class="values-list">
-                    <span class="value-tag">الجودة</span>
-                    <span class="value-tag">الثقة</span>
-                    <span class="value-tag">الابتكار</span>
-                    <span class="value-tag">الراحة</span>
-                    <span class="value-tag">رضا العميل</span>
-                    <span class="value-tag">الالتزام</span>
+            <div class="p-2 border-r lg:border-r border-gray-100">
+                <div class="text-3xl md:text-4xl font-black text-corporateBlue mb-1" data-target="60">+0</div>
+                <div class="text-xs md:text-sm font-bold text-gray-500">فنياً مختصاً وكفاءات محترفة</div>
+            </div>
+            <div class="p-2 border-r border-gray-100">
+                <div class="text-3xl md:text-4xl font-black text-corporateBlue mb-1" data-target="2">0</div>
+                <div class="text-xs md:text-sm font-bold text-gray-500">محل لبيع قطع الغيار الأصلية والمعتمدة</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-black text-corporateBlue mb-4">من نحن وجوهر العلامة التجارية</h2>
+            <div class="w-16 h-1 bg-accentBlue mx-auto rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-xl shadow-sm border-r-4 border-accentBlue hover:shadow-md transition-shadow">
+                <h3 class="text-xl font-bold text-corporateBlue mb-4">الرؤية</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">أن نكون الخيار الأول والوجهة الأكثر موثوقية في مجال صيانة وإصلاح السيارات بجودة عالية وتقنيات وحلول صيانة حديثة تواكب المتطلبات التقنية المتجددة للمركبات.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm border-r-4 border-techGreen hover:shadow-md transition-shadow">
+                <h3 class="text-xl font-bold text-corporateBlue mb-4">الرسالة</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">تقديم خدمات صيانة موثوقة وشاملة، ترتكز على كفاءة فريقنا الفني المتمرس والاعتماد التام على الأجهزة البرمجية المتقدمة لضمان أقصى درجات الرضا والأمان والثقة للعميل.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm border-r-4 border-corporateBlue hover:shadow-md transition-shadow">
+                <h3 class="text-xl font-bold text-corporateBlue mb-4">قيمنا الجوهرية</h3>
+                <p class="text-gray-500 text-xs mb-4 font-semibold">المبادئ المحركة لمسيرتنا والضامنة لنجاحنا المستمر:</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-emerald-50 text-techGreen text-xs font-extrabold px-3 py-1.5 rounded-full">الجودة</span>
+                    <span class="bg-emerald-50 text-techGreen text-xs font-extrabold px-3 py-1.5 rounded-full">الثقة</span>
+                    <span class="bg-emerald-50 text-techGreen text-xs font-extrabold px-3 py-1.5 rounded-full">الابتكار</span>
+                    <span class="bg-emerald-50 text-techGreen text-xs font-extrabold px-3 py-1.5 rounded-full">الراحة</span>
+                    <span class="bg-emerald-50 text-techGreen text-xs font-extrabold px-3 py-1.5 rounded-full">رضا العميل</span>
+                    <span class="bg-emerald-50 text-techGreen text-xs font-extrabold px-3 py-1.5 rounded-full">الالتزام</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" style="background-color: #f4f7f9;">
-        <h2 class="section-title">خدماتنا الشاملة للأفراد والشركات</h2>
-        <p class="section-subtitle">حلول متكاملة تغطي جميع جوانب الصيانة من الفحص والبرمجة وحتى السمكرة والدهان</p>
-        
-        <div class="grid">
-            <div class="card">
-                <h3>الكهرباء والبرمجة</h3>
-                <p>تشخيص دقيق لأعطال الكهرباء والبرمجة لجميع السيارات بأحدث أنظمة الفحص المعتمدة للتحكم وبرمجة الأداء والعزم واستجابة الدعسة وتحسين استهلاك الوقود، برمجة سيارات الديزل ومعالجة أنظمة البيئة، بالإضافة لخدمات البرمجة عن بعد لكافة أنحاء العالم وتقديم الاستشارات الفنية.</p>
+    <section id="services" class="py-24 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black text-corporateBlue mb-3">خدماتنا الشاملة للأفراد والشركات</h2>
+                <p class="text-gray-500 font-medium text-sm max-w-2xl mx-auto">حلول هندسية وفنية متكاملة تغطي كافة جوانب صيانة المركبة من الفحص المبدئي وحتى التسليم النهائي</p>
             </div>
-            <div class="card accent-border">
-                <h3>الميكانيكا والتوضيب</h3>
-                <p>خدمات احترافية متكاملة تحت إشراف فريق فني متمرس؛ تشمل توضيب المحركات والقيرات، صيانة وإصلاح الأعطال الميكانيكية الشاملة، وإجراء الفحوصات الدورية والدقيقة وفق أعلى المعايير الفنية والمعدات الحديثة لضمان كفاءة أداء السيارة العالية.</p>
-            </div>
-            <div class="card">
-                <h3>السمكرة والدهان</h3>
-                <p>إعادة تأهيل وهياكل السيارات وإصلاح الصدمات والخدوش بدقة فائقة، وتعديل الهيكل الخارجي وأعمال الرش والدهان المطابقة تماماً للون السيارة الأصلي داخل أفران حرارية مخصصة تضمن استعادة المركبة لمظهرها الجمالي بأفضل صورة ممكنة.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="tech-section">
-        <h2 class="section-title">الأنظمة والمبرمجات العالمية المعتمدة</h2>
-        <p class="section-subtitle">نعتمد على التكنولوجيا الأحدث عالمياً لضمان الفحص الدقيق والآمن لسيارات الوكالات والأمريكي والأوروبي</p>
-        <div class="tech-tags">
-            <div class="tag">Kess3</div>
-            <div class="tag">Flex</div>
-            <div class="tag">HPTuner</div>
-            <div class="tag">VVDI Prog</div>
-            <div class="tag">OBD Smart</div>
-            <div class="tag">GPROG</div>
-            <div class="tag">Autel</div>
-            <div class="tag">Launch</div>
-            <div class="tag">Thinktool</div>
-            <div class="tag">JAD</div>
-            <div class="tag">أجهزة الوكالات الأصلية (Toyota, GMC, Ford, Mazda)</div>
-        </div>
-    </section>
-
-    <section id="gallery">
-        <h2 class="section-title">نماذج من أعمالنا وخدماتنا الموثقة</h2>
-        <p class="section-subtitle">جوانب حية من الخدمات المنفذة داخل مراكزنا بأعلى درجات الدقة والاحترافية</p>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="gallery1.jpg" alt="توضيب قير" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=400'">
-                <div class="gallery-caption">توضيب قير محترف</div>
-            </div>
-            <div class="gallery-item">
-                <img src="gallery2.jpg" alt="توضيب ماكينة" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=400'">
-                <div class="gallery-caption">توضيب ماكينات ومحركات</div>
-            </div>
-            <div class="gallery-item">
-                <img src="gallery3.jpg" alt="رش بوية فرن حراري" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=400'">
-                <div class="gallery-caption">رش بوية فرن حراري تجميلي</div>
-            </div>
-            <div class="gallery-item">
-                <img src="gallery4.jpg" alt="صيانة عضلات وتصفية شاملة" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=400'">
-                <div class="gallery-caption">صيانة عضلات المركبة وتصفية شاملة</div>
-            </div>
-            <div class="gallery-item">
-                <img src="gallery5.jpg" alt="إصلاح دائرة التكييف" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=400'">
-                <div class="gallery-caption">إصلاح وصيانة دوائر التكييف</div>
-            </div>
-            <div class="gallery-item">
-                <img src="gallery6.jpg" alt="فروع مراكز الصيانة" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?q=80&w=400'">
-                <div class="gallery-caption">تجهيزات مراكز الصيانة من الداخل</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-sm p-8 border-t-4 border-corporateBlue hover:-translate-y-2 transition-all duration-300 group">
+                    <h3 class="text-xl font-extrabold text-corporateBlue mb-4 group-hover:text-accentBlue transition-colors">الكهرباء والبرمجة</h3>
+                    <p class="text-gray-600 text-sm text-justify leading-relaxed">تشخيص دقيق وفحص شامل لكافة الأعطال الكهربائية والبرمجية، تعديل وتحسين الأداء والعزم واستجابة الدعسة والتحسين الكامل لاستهلاك الوقود. معالجة سيارات الديزل وأنظمة البيئة المعقدة، وخدمات البرمجة عن بعد العابرة للقارات، بالإضافة إلى تقديم دورات واستشارات فنية حضورية ورقمية.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-8 border-t-4 border-techGreen hover:-translate-y-2 transition-all duration-300 group">
+                    <h3 class="text-xl font-extrabold text-corporateBlue mb-4 group-hover:text-techGreen transition-colors">الميكانيكا والتوضيب</h3>
+                    <p class="text-gray-600 text-sm text-justify leading-relaxed">أعمال متخصصة وعالية الدقة في توضيب المحركات والقيرات بمختلف أنواعها وأحجامها، إصلاح وصيانة كافة الأعطال الميكانيكية المعقدة، مع الفحص الفني الشامل والممنهج للمنظومات الحركية وعضلات المركبة تحت إشراف نخبة من كبار الفنيين لضمان الكفاءة والأداء المثالي.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-8 border-t-4 border-accentBlue hover:-translate-y-2 transition-all duration-300 group">
+                    <h3 class="text-xl font-extrabold text-corporateBlue mb-4 group-hover:text-accentBlue transition-colors">السمكرة والدهان</h3>
+                    <p class="text-gray-600 text-sm text-justify leading-relaxed">إصلاح شامل واحترافي لجميع أنواع الصدمات والخدوش السطحية والعميقة، تعديل وضبط الهيكل الخارجي الخاضع للحوادث بدقة، مع تزويد المركبة بدهان ورش تجميلي مطابق تماماً للون الصانع الأصلي للمركبة، ويتم العمل بالكامل داخل أفران حرارية مخصصة تضمن الجودة القصوى.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="partners" class="partners-section">
-        <h2 class="section-title">أبرز شركاء نجاحنا</h2>
-        <p class="section-subtitle">نفخر بخدمة وثقة كبرى الجهات الحكومية والقطاعات الحيوية في المملكة العربية السعودية</p>
-        
-        <div class="partners-grid">
-            <div class="partner-card">وزارة الدفاع</div>
-            <div class="partner-card">وزارة الصحة</div>
-            <div class="partner-card">أمانة منطقة الرياض</div>
-            <div class="partner-card">هيئة الهلال الأحمر السعودي</div>
-            <div class="partner-card">أرامكو السعودية</div>
-            <div class="partner-card">الشركة السعودية للكهرباء</div>
-            <div class="partner-card">شركة المياه الوطنية</div>
-            <div class="partner-card">الخطوط الحديدية السعودية (SAR)</div>
-            <div class="partner-card">مجموعة stc</div>
-            <div class="partner-card">شركة موبايلي</div>
-            <div class="partner-card">أسواق العثيم</div>
-            <div class="partner-card">لافيرن (LAVERNE)</div>
+    <section id="tech" class="py-20 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+        <h2 class="text-2xl font-black text-corporateBlue mb-4">البنية التحتية والأنظمة والمبرمجات العالمية المعتمدة لدينا</h2>
+        <p class="text-gray-500 text-sm max-w-3xl mx-auto mb-10 font-medium">نعتمد في فروعنا على الجيل الأحدث من أنظمة تشخيص وبرمجة سيارات الوكالة والمركبات الأمريكية والأوروبية لضمان سلامة البيانات ودقة التنفيذ:</p>
+        <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+            <span class="bg-white text-corporateBlue border border-gray-200 px-4 py-2 rounded-full font-bold text-xs shadow-sm">Kess3</span>
+            <span class="bg-white text-corporateBlue border border-gray-200 px-4 py-2 rounded-full font-bold text-xs shadow-sm">Flex</span>
+            <span class="bg-white text-corporateBlue border border-gray-200 px-4 py-2 rounded-full font-bold text-xs shadow-sm">HPTuner</span>
+            <span class="bg-white text-corporateBlue border border-gray-200 px-4 py-2 rounded-full font-bold text-xs shadow-sm">VVDI Prog</span>
+            <span class="bg-white text-corporateBlue border border-gray-200 px-4 py-2 rounded-full font-bold text-xs shadow-sm">OBD Smart</span>
+            <span class="bg-white text-corporateBlue border border-gray-200 px-4 py-2 rounded-full font-bold text-xs shadow-sm">GPROG</span>
+            <span class="bg-white text-corporateBlue border border-gray-200 px-4 py-2 rounded-full font-bold text-xs shadow-sm">Autel</span>
+            <span class="bg-white text-corporateBlue border border-gray-200 px-4 py-2 rounded-full font-bold text-xs shadow-sm">Launch</span>
+            <span class="bg-white text-corporateBlue border border-gray-200 px-4 py-2 rounded-full font-bold text-xs shadow-sm">Thinktool</span>
+            <span class="bg-white text-corporateBlue border border-gray-200 px-4 py-2 rounded-full font-bold text-xs shadow-sm">JAD</span>
+            <span class="bg-white text-techGreen border border-techGreen/20 px-5 py-2 rounded-full font-black text-xs shadow-sm bg-emerald-50/30">أجهزة الوكالات الأصلية (Toyota, GMC, Ford, Mazda)</span>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>عن الشركة وموثوقيتها القانونية</h4>
-                <p>شركة بيت الأخوة المحدودة هي منشأة رسمية ذات مسؤولية محدودة برأس مال مسجل قدره 1,000,000 ريال سعودي. مسجلة رسمياً وموثقة بشهادات ضريبة القيمة المضافة واشتراك الغرفة التجارية بالرياض وعنوان وطني معتمد لضمان أعلى درجات الموثوقية العقدية والقانونية للأفراد والشركات.</p>
+    <section id="gallery" class="py-24 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-corporateBlue mb-3">نماذج من أعمالنا وخدماتنا الموثقة</h2>
+                <p class="text-gray-500 text-sm font-medium">تصفح التوثيق الحي لعمليات الصيانة والإصلاح المنجزة داخل مراكزنا الشاملة</p>
             </div>
-            <div class="footer-section">
-                <h4>بيانات الاتصال والمقرات</h4>
-                <p>📍 المقر الرئيسي: الرياض - النسيم الغربي - شارع عبدالله بن عمير 14230</p>
-                <p>📞 رقم الجوال المباشر للتواصل والمواعيد: 0507497683</p>
-                <p>✉️ البريد الإلكتروني الرسمي: Info@baytalkhwa.com</p>
+            
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterGallery('all')" id="btn-all" class="filter-btn bg-corporateBlue text-white px-5 py-2 rounded-lg font-bold text-xs transition-all shadow-md">الكل</button>
+                <button onclick="filterGallery('mechanic')" id="btn-mechanic" class="filter-btn bg-white text-gray-600 hover:bg-gray-100 px-5 py-2 rounded-lg font-bold text-xs transition-all border border-gray-200">ميكانيكا وتوضيب</button>
+                <button onclick="filterGallery('body')" id="btn-body" class="filter-btn bg-white text-gray-600 hover:bg-gray-100 px-5 py-2 rounded-lg font-bold text-xs transition-all border border-gray-200">سمكرة ودهان</button>
+                <button onclick="filterGallery('general')" id="btn-general" class="filter-btn bg-white text-gray-600 hover:bg-gray-100 px-5 py-2 rounded-lg font-bold text-xs transition-all border border-gray-200">صيانة عامة وتكييف</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                <div class="gallery-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100" data-category="mechanic">
+                    <img src="gallery1.jpg" alt="توضيب قير محترف" class="w-100 h-56 object-cover bg-gray-200" onerror="this.src='https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=400'">
+                    <div class="p-4 font-bold text-sm text-corporateBlue text-center">توضيب قير أوتوماتيك ومحرك</div>
+                </div>
+                <div class="gallery-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100" data-category="mechanic">
+                    <img src="gallery2.jpg" alt="توضيب ماكينات ومحركات" class="w-100 h-56 object-cover bg-gray-200" onerror="this.src='https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=400'">
+                    <div class="p-4 font-bold text-sm text-corporateBlue text-center">توضيب ماكينة وفحص الأداء الهيدروليكي</div>
+                </div>
+                <div class="gallery-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100" data-category="body">
+                    <img src="gallery3.jpg" alt="رش بوية فرن حراري" class="w-100 h-56 object-cover bg-gray-200" onerror="this.src='https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=400'">
+                    <div class="p-4 font-bold text-sm text-corporateBlue text-center">رش بوية فرن حراري تجميلي مطابق تماماً للأصل</div>
+                </div>
+                <div class="gallery-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100" data-category="general">
+                    <img src="gallery4.jpg" alt="صيانة عضلات المركبة وتصفية شاملة" class="w-100 h-56 object-cover bg-gray-200" onerror="this.src='https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=400'">
+                    <div class="p-4 font-bold text-sm text-corporateBlue text-center">صيانة عضلات المركبة وتصفية شاملة</div>
+                </div>
+                <div class="gallery-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100" data-category="general">
+                    <img src="gallery5.jpg" alt="إصلاح وصيانة دوائر التكييف" class="w-100 h-56 object-cover bg-gray-200" onerror="this.src='https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=400'">
+                    <div class="p-4 font-bold text-sm text-corporateBlue text-center">إصلاح وصيانة دوائر التكييف والتبادل الحراري</div>
+                </div>
+                <div class="gallery-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100" data-category="general">
+                    <img src="gallery6.jpg" alt="تجهيزات مراكز الصيانة من الداخل" class="w-100 h-56 object-cover bg-gray-200" onerror="this.src='https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?q=80&w=400'">
+                    <div class="p-4 font-bold text-sm text-corporateBlue text-center">تجهيزات مراكز الصيانة من الداخل واستقبال السيارات</div>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            &copy; 2026 شركة بيت الأخوة المحدودة لصيانة السيارات. جميع الحقوق محفوظة.
+    </section>
+
+    <section id="partners" class="py-20 bg-white overflow-hidden border-b border-gray-100">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl font-black text-corporateBlue mb-2">أبرز شركاء نجاحنا الموثقين في الملف</h2>
+            <p class="text-gray-400 text-xs font-bold">نفخر بخدمة كبرى الكيانات الحكومية والنفطية والصحية والاتصالية في المنظومة السعودية</p>
+        </div>
+        <div class="relative w-full flex items-center">
+            <div class="animate-marquee whitespace-nowrap flex gap-6 items-center">
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">وزارة الدفاع</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">وزارة الصحة</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">أمانة منطقة الرياض</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">هيئة الهلال الأحمر السعودي</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">أرامكو السعودية</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">الشركة السعودية للكهرباء</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">شركة المياه الوطنية</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">الخطوط الحديدية السعودية SAR</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">مجموعة stc</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">شركة موبايلي</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">أسواق العثيم</span>
+                <span class="bg-gray-50 border border-gray-100 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 shadow-sm mx-2">لافيرن LAVERNE</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-corporateBlue text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-white/10 pb-16">
+            <div class="space-y-4">
+                <h4 class="text-xl font-black border-b-2 border-accentBlue pb-2 inline-block">الهوية القانونية والموثوقية</h4>
+                <p class="text-gray-300 text-sm text-justify leading-relaxed">شركة بيت الأخوة المحدودة هي شركة رسمية سعودية ذات مسؤولية محدودة برأس مال مسجل ومدفوع قدره 1,000,000 ريال سعودي. مسجلة بشكل رسمي لدى وزارة التجارة وموثقة بشهادات التسجيل الضريبي، الزكاة والدخل، واشتراك الغرفة التجارية بالرياض والعنوان الوطني المعتمد، لتقديم تجربة تعاقدية آمنة وموثوقة لكافة قطاعات الأفراد والشركات والجهات الحكومية.</p>
+            </div>
+            <div class="space-y-4 md:mr-6">
+                <h4 class="text-xl font-black border-b-2 border-accentBlue pb-2 inline-block">بيانات المقر الرئيسي والاتصال</h4>
+                <p class="text-gray-300 text-sm flex gap-2 items-start">📍 <span class="font-semibold">المقر الرئيسي: الرياض - النسيم الغربي - شارع عبدالله بن عمير 14230.</span></p>
+                <p class="text-gray-300 text-sm flex gap-2 items-center">📞 <span class="font-semibold">الهاتف المباشر والمواعيد: <a href="tel:0507497683" class="hover:text-accentBlue text-white transition-colors">0507497683</a></span></p>
+                <p class="text-gray-300 text-sm flex gap-2 items-center">✉️ <span class="font-semibold">البريد الإلكتروني المعتمد: <a href="mailto:Info@baytalkhwa.com" class="hover:text-accentBlue text-white transition-colors">Info@baytalkhwa.com</a></span></p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-xl font-black border-b-2 border-accentBlue pb-2 inline-block">حسابات التواصل الاجتماعي</h4>
+                <p class="text-gray-300 text-sm">شاهد التوثيقات اليومية الحية لعمليات الصيانة ومقاطع الفحص الرقمية من الأقسام عبر حساباتنا الرسمية:</p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://instagram.com" target="_blank" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg font-bold text-xs transition-all inline-block">حساب انستقرام 📸</a>
+                    <a href="https://tiktok.com" target="_blank" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg font-bold text-xs transition-all inline-block">حساب تيك توك 🎬</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center pt-8 text-xs text-gray-400 font-medium">
+            &copy; 2026 شركة بيت الأخوة المحدودة لصيانة السيارات. جميع الحقوق الموثوقة محفوظة.
         </div>
     </footer>
 
+    <script>
+        // دالة تصفية معرض الأعمال الذكية والمتحركة بسلاسة
+        function filterGallery(category) {
+            const cards = document.querySelectorAll('.gallery-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // تحديث تصميم أزرار التصفية النشطة وغير النشطة
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-corporateBlue', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+            });
+            const activeBtn = document.getElementById(`btn-${category}`);
+            if(activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+                activeBtn.classList.add('bg-corporateBlue', 'text-white', 'shadow-md');
+            }
+
+            // تصفية الكروت الحقيقية بإخفاء أو إظهار العناصر
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 50);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // أنيميشن عداد الأرقام التلقائي التفاعلي عند تمرير الصفحة (Intersection Observer)
+        document.addEventListener("DOMContentLoaded", () => {
+            const counters = document.querySelectorAll('[data-target]');
+            const animateCounters = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        let count = 0;
+                        const speed = Math.ceil(target / 40); // سرعة الحركة والتوافق مع الرقم التارقت
+                        
+                        const updateCount = () => {
+                            count += speed;
+                            if (count >= target) {
+                                counter.innerText = (counter.innerText.startsWith('+') ? '+' : '') + target;
+                            } else {
+                                counter.innerText = (counter.innerText.startsWith('+') ? '+' : '') + count;
+                                setTimeout(updateCount, 30);
+                            }
+                        };
+                        updateCount();
+                        observer.unobserve(counter);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(animateCounters, { threshold: 0.5 });
+            counters.forEach(counter => observer.observe(counter));
+        });
+    </script>
 </body>
 </html>
