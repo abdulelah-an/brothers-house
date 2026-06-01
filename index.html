@@ -53,29 +53,24 @@
       color: var(--ink);
     }
 
-    ::selection {
-      background: rgba(29, 122, 70, 0.2);
-      color: var(--corporate);
-    }
-
-    /* Header glass effect becomes denser after the first scroll. */
+    /* تحسين جودة الهيدر الزجاجي على المتصفحات الجوالة */
     .site-header {
-      background: rgba(255, 255, 255, 0.76);
+      background: rgba(255, 255, 255, 0.85);
       border-bottom: 1px solid rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       transition: background 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
     }
 
     .site-header.is-scrolled {
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.96);
       border-color: rgba(11, 60, 93, 0.1);
-      box-shadow: 0 16px 42px rgba(11, 60, 93, 0.1);
+      box-shadow: 0 16px 42px rgba(11, 60, 93, 0.08);
     }
 
     .hero-bg {
       background-image:
-        linear-gradient(90deg, rgba(5, 21, 34, 0.88) 0%, rgba(11, 60, 93, 0.78) 48%, rgba(4, 20, 31, 0.7) 100%),
+        linear-gradient(90deg, rgba(5, 21, 34, 0.92) 0%, rgba(11, 60, 93, 0.84) 48%, rgba(4, 20, 31, 0.75) 100%),
         url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=2200&q=85");
       background-position: center;
       background-size: cover;
@@ -83,14 +78,9 @@
 
     .technical-grid {
       background-image:
-        linear-gradient(rgba(11, 60, 93, 0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(11, 60, 93, 0.055) 1px, transparent 1px);
-      background-size: 28px 28px;
-    }
-
-    .focus-ring:focus-visible {
-      outline: 3px solid rgba(29, 122, 70, 0.36);
-      outline-offset: 4px;
+        linear-gradient(rgba(11, 60, 93, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(11, 60, 93, 0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
     }
 
     .nav-link {
@@ -116,8 +106,8 @@
 
     .section-reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 700ms ease, transform 700ms ease;
+      transform: translateY(15px);
+      transition: opacity 600ms ease, transform 600ms ease;
     }
 
     .section-reveal.is-visible {
@@ -129,23 +119,22 @@
       color: #fff;
       background: var(--emerald);
       border-color: var(--emerald);
-      box-shadow: 0 12px 30px rgba(29, 122, 70, 0.2);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
     }
 
     .service-card,
     .gallery-card,
     .stat-card,
     .tool-badge {
-      transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease, background 260ms ease;
+      transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
     }
 
     .service-card:hover,
     .gallery-card:hover,
     .stat-card:hover,
     .tool-badge:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 70px rgba(11, 60, 93, 0.13);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(11, 60, 93, 0.1);
     }
 
     .gallery-card.is-hidden {
@@ -156,47 +145,24 @@
       color: #fff;
       background: var(--corporate);
       border-color: var(--corporate);
-      box-shadow: 0 14px 32px rgba(11, 60, 93, 0.18);
     }
 
     .partner-ribbon {
       overflow: hidden;
-      mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
     }
 
+    /* تسريع الأنيميشن وضمان سلاسته على معالجات الجوال */
     .partner-track {
       width: max-content;
-      animation: partner-scroll 32s linear infinite;
-    }
-
-    .partner-ribbon:hover .partner-track {
-      animation-play-state: paused;
+      animation: partner-scroll 28s linear infinite;
+      will-change: transform;
     }
 
     @keyframes partner-scroll {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(50%);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-      }
-
-      .section-reveal {
-        opacity: 1;
-        transform: none;
-      }
+      from { transform: translateX(0); }
+      to { transform: translateX(50%); }
     }
   </style>
 </head>
@@ -204,23 +170,23 @@
 <body class="font-cairo antialiased">
   <header id="siteHeader" class="site-header fixed inset-x-0 top-0 z-50">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="التنقل الرئيسي">
-      <a href="#home" class="focus-ring flex items-center gap-3 rounded-md" aria-label="شركة بيت الأخوة المحدودة لصيانة السيارات">
-        <span class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-md border border-white/70 bg-white shadow-sm">
+      <a href="#home" class="flex items-center gap-3 rounded-md" aria-label="شركة بيت الأخوة المحدودة لصيانة السيارات">
+        <span class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-md border border-slate-100 bg-white shadow-sm">
           <img
             src="logo.png"
             alt="شعار شركة بيت الأخوة المحدودة لصيانة السيارات"
             class="h-full w-full object-contain"
             onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.classList.remove('hidden');"
           />
-          <span class="hidden text-sm font-black text-corporate">ب أ</span>
+          <span class="hidden text-xs font-black text-corporate">ب أ</span>
         </span>
-        <span class="hidden leading-tight sm:block">
+        <span class="leading-tight block">
           <span class="block text-sm font-black text-corporate">بيت الأخوة</span>
-          <span class="block text-xs font-semibold text-slate-500">لصيانة السيارات</span>
+          <span class="block text-[10px] font-bold text-slate-500">لصيانة السيارات</span>
         </span>
       </a>
 
-      <div class="hidden items-center gap-7 lg:flex">
+      <div class="hidden items-center gap-6 lg:flex">
         <a href="#home" class="nav-link text-sm font-bold text-slate-700 transition hover:text-corporate">الرئيسية</a>
         <a href="#about" class="nav-link text-sm font-bold text-slate-700 transition hover:text-corporate">من نحن</a>
         <a href="#services" class="nav-link text-sm font-bold text-slate-700 transition hover:text-corporate">خدماتنا</a>
@@ -229,11 +195,8 @@
         <a href="#partners" class="nav-link text-sm font-bold text-slate-700 transition hover:text-corporate">شركاؤنا</a>
       </div>
 
-      <div class="hidden items-center gap-3 lg:flex">
-        <a
-          href="tel:0507497683"
-          class="focus-ring rounded-md bg-emeraldTech px-5 py-3 text-sm font-extrabold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-[#17663a]"
-        >
+      <div class="hidden lg:flex">
+        <a href="tel:0507497683" class="bg-emeraldTech px-5 py-2.5 text-sm font-extrabold text-white shadow-glow rounded-md hover:bg-[#17663a] transition">
           اتصل بنا فوراً
         </a>
       </div>
@@ -241,153 +204,143 @@
       <button
         id="menuToggle"
         type="button"
-        class="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-200 bg-white text-corporate shadow-sm transition hover:bg-slate-50 lg:hidden"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 bg-white text-corporate shadow-sm lg:hidden"
         aria-controls="mobileMenu"
         aria-expanded="false"
         aria-label="فتح القائمة"
       >
-        <svg class="h-6 w-6" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+        <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24" fill="none">
           <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
       </button>
     </nav>
 
-    <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white/96 px-4 py-4 shadow-lg lg:hidden">
-      <div class="mx-auto grid max-w-7xl gap-2">
-        <a href="#home" class="mobile-link rounded-md px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100">الرئيسية</a>
-        <a href="#about" class="mobile-link rounded-md px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100">من نحن</a>
-        <a href="#services" class="mobile-link rounded-md px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100">خدماتنا</a>
-        <a href="#technology" class="mobile-link rounded-md px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100">التميز التقني</a>
-        <a href="#gallery" class="mobile-link rounded-md px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100">معرض الأعمال</a>
-        <a href="#partners" class="mobile-link rounded-md px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100">شركاؤنا</a>
-        <a href="tel:0507497683" class="mt-2 rounded-md bg-emeraldTech px-4 py-3 text-center text-sm font-extrabold text-white shadow-glow">اتصل بنا فوراً</a>
-      </div>
+    <div id="mobileMenu" class="hidden border-t border-slate-100 bg-white px-4 py-3 shadow-xl lg:hidden">
+      <div class="grid gap-1">
+        <a href="#home" class="mobile-link rounded-md px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50">الرئيسية</a>
+        <a href="#about" class="mobile-link rounded-md px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50">من نحن</a>
+        <a href="#services" class="mobile-link rounded-md px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50">خدماتنا</a>
+        <a href="#technology" class="mobile-link rounded-md px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50">التميز التقني</a>
+        <a href="#gallery" class="mobile-link rounded-md px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50">معرض الأعمال</a>
+        <a href="#partners" class="mobile-link rounded-md px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50">شركاؤنا</a>
+        <a href="tel:0507497683" class="mt-2 rounded-md bg-emeraldTech py-3 text-center text-sm font-black text-white shadow-glow block">اتصل بنا فوراً</a>
     </div>
   </header>
 
   <main id="home">
-    <section class="hero-bg relative isolate flex min-h-[88svh] items-center pt-24 text-white">
-      <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f7f9fb] to-transparent"></div>
-      <div class="mx-auto grid w-full max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
+    <section class="hero-bg relative isolate flex min-h-[82svh] items-center pt-20 text-white">
+      <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#f7f9fb] to-transparent"></div>
+      <div class="mx-auto grid w-full max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-20">
         <div class="section-reveal relative z-10 max-w-3xl">
-          <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/12 px-4 py-2 text-sm font-bold text-white/90 backdrop-blur">
-            <span class="h-2 w-2 rounded-full bg-emerald-300"></span>
+          <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-bold text-white/90 backdrop-blur">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
             صيانة متكاملة وتقنيات تشخيص متقدمة
           </p>
-          <h1 class="max-w-4xl text-4xl font-black leading-[1.18] tracking-normal sm:text-5xl lg:text-6xl">
+          <h1 class="max-w-4xl text-3xl font-black leading-tight sm:text-5xl lg:text-6xl">
             شركة بيت الأخوة المحدودة لصيانة السيارات
           </h1>
-          <p class="mt-6 max-w-2xl text-lg font-medium leading-9 text-white/86 sm:text-xl">
+          <p class="mt-4 max-w-2xl text-base font-medium leading-7 text-white/80 sm:text-xl sm:leading-9">
             الوجهة الأولى الموثوقة في صيانة السيارات بالمملكة العربية السعودية. خبرة تمتد لأكثر من 25 عاماً نلتزم فيها بالدقة، الشفافية، والسرعة في الإنجاز.
           </p>
-          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#services"
-              class="focus-ring inline-flex items-center justify-center rounded-md bg-emeraldTech px-7 py-4 text-base font-extrabold text-white shadow-glow transition hover:-translate-y-1 hover:bg-[#17663a]"
-            >
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row w-full sm:w-auto">
+            <a href="#services" class="inline-flex items-center justify-center rounded-md bg-emeraldTech py-3.5 px-6 text-base font-extrabold text-white shadow-glow transition hover:bg-[#17663a] w-full sm:w-auto text-center">
               استكشف خدماتنا
             </a>
-            <a
-              href="tel:0507497683"
-              class="focus-ring inline-flex items-center justify-center rounded-md border border-white/35 bg-white/10 px-7 py-4 text-base font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white hover:text-corporate"
-            >
+            <a href="tel:0507497683" class="inline-flex items-center justify-center rounded-md border border-white/30 bg-white/10 py-3.5 px-6 text-base font-extrabold text-white backdrop-blur transition hover:bg-white hover:text-corporate w-full sm:w-auto text-center">
               اتصل بنا
             </a>
           </div>
         </div>
 
         <aside class="section-reveal relative z-10 self-end lg:pt-20" aria-label="ملخص قدرات الشركة">
-          <div class="grid gap-3 rounded-md border border-white/18 bg-white/10 p-3 shadow-2xl backdrop-blur-xl sm:grid-cols-2">
-            <div class="rounded-md border border-white/15 bg-white/14 p-5">
-              <p class="text-3xl font-black text-white">1990م</p>
-              <p class="mt-2 text-sm font-semibold leading-6 text-white/78">انطلاقة راسخة في قطاع صيانة السيارات بالمملكة</p>
+          <div class="grid gap-3 rounded-md border border-white/10 bg-white/5 p-2.5 shadow-2xl backdrop-blur-xl grid-cols-2">
+            <div class="rounded-md border border-white/10 bg-white/10 p-4">
+              <p class="text-xl sm:text-2xl font-black text-white">1990م</p>
+              <p class="mt-1 text-xs font-semibold leading-5 text-white/70">انطلاقة راسخة في قطاع صيانة السيارات بالمملكة</p>
             </div>
-            <div class="rounded-md border border-white/15 bg-white/14 p-5">
-              <p class="text-3xl font-black text-white">الرياض</p>
-              <p class="mt-2 text-sm font-semibold leading-6 text-white/78">خدمة احترافية من الاستقبال إلى التسليم</p>
+            <div class="rounded-md border border-white/10 bg-white/10 p-4">
+              <p class="text-xl sm:text-2xl font-black text-white">الرياض</p>
+              <p class="mt-1 text-xs font-semibold leading-5 text-white/70">خدمة احترافية من الاستقبال إلى التسليم</p>
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <section id="stats" class="relative z-10 -mt-10 px-4 sm:px-6 lg:px-8" aria-label="إحصاءات شركة بيت الأخوة">
-      <div class="mx-auto grid max-w-7xl gap-4 rounded-md border border-slate-200 bg-white p-4 shadow-premium sm:grid-cols-2 lg:grid-cols-4">
-        <article class="stat-card rounded-md border border-slate-100 bg-slate-50 p-6 text-center">
-          <p class="text-4xl font-black text-corporate" dir="ltr"><span class="counter" data-target="25" data-prefix="+">0</span></p>
-          <h2 class="mt-3 text-base font-extrabold text-slate-900">عاماً من الخبرة والريادة</h2>
-          <p class="mt-1 text-sm font-semibold text-slate-500">منذ 1990م</p>
+    <section id="stats" class="relative z-10 -mt-6 px-4 sm:px-6 lg:px-8" aria-label="إحصاءات شركة بيت الأخوة">
+      <div class="mx-auto grid max-w-7xl gap-3 rounded-md border border-slate-100 bg-white p-3 shadow-premium grid-cols-2 lg:grid-cols-4">
+        <article class="stat-card rounded-md border border-slate-50 bg-slate-50/50 p-4 text-center">
+          <p class="text-2xl sm:text-4xl font-black text-corporate" dir="ltr"><span class="counter" data-target="25" data-prefix="+">0</span></p>
+          <h2 class="mt-1.5 text-xs sm:text-base font-extrabold text-slate-900">عاماً من الخبرة والريادة</h2>
+          <p class="text-[10px] sm:text-sm font-semibold text-slate-400">منذ 1990م</p>
         </article>
-        <article class="stat-card rounded-md border border-slate-100 bg-slate-50 p-6 text-center">
-          <p class="text-4xl font-black text-corporate" dir="ltr"><span class="counter" data-target="4">0</span></p>
-          <h2 class="mt-3 text-base font-extrabold text-slate-900">فروع مراكز صيانة متكاملة مجهزة</h2>
-          <p class="mt-1 text-sm font-semibold text-slate-500">انتشار عملي يخدم العملاء بكفاءة</p>
+        <article class="stat-card rounded-md border border-slate-50 bg-slate-50/50 p-4 text-center">
+          <p class="text-2xl sm:text-4xl font-black text-corporate" dir="ltr"><span class="counter" data-target="4">0</span></p>
+          <h2 class="mt-1.5 text-xs sm:text-base font-extrabold text-slate-900">فروع مراكز صيانة مجهزة</h2>
+          <p class="text-[10px] sm:text-sm font-semibold text-slate-400">انتشار عملي يخدم العملاء</p>
         </article>
-        <article class="stat-card rounded-md border border-slate-100 bg-slate-50 p-6 text-center">
-          <p class="text-4xl font-black text-corporate" dir="ltr"><span class="counter" data-target="60" data-prefix="+">0</span></p>
-          <h2 class="mt-3 text-base font-extrabold text-slate-900">فنياً مختصاً وكفاءات محترفة</h2>
-          <p class="mt-1 text-sm font-semibold text-slate-500">فرق فنية مدربة على أعلى مستوى</p>
+        <article class="stat-card rounded-md border border-slate-50 bg-slate-50/50 p-4 text-center">
+          <p class="text-2xl sm:text-4xl font-black text-corporate" dir="ltr"><span class="counter" data-target="60" data-prefix="+">0</span></p>
+          <h2 class="mt-1.5 text-xs sm:text-base font-extrabold text-slate-900">فنياً مختصاً وكفاءات محترفة</h2>
+          <p class="text-[10px] sm:text-sm font-semibold text-slate-400">طواقم فنية مدربة بالكامل</p>
         </article>
-        <article class="stat-card rounded-md border border-slate-100 bg-slate-50 p-6 text-center">
-          <p class="text-4xl font-black text-corporate" dir="ltr"><span class="counter" data-target="2">0</span></p>
-          <h2 class="mt-3 text-base font-extrabold text-slate-900">محل لبيع قطع الغيار الأصلية والمعتمدة</h2>
-          <p class="mt-1 text-sm font-semibold text-slate-500">دعم مباشر للصيانة وموثوقية القطع</p>
+        <article class="stat-card rounded-md border border-slate-50 bg-slate-50/50 p-4 text-center">
+          <p class="text-2xl sm:text-4xl font-black text-corporate" dir="ltr"><span class="counter" data-target="2">0</span></p>
+          <h2 class="mt-1.5 text-xs sm:text-base font-extrabold text-slate-900">محلات بيع قطع الغيار الأصلية</h2>
+          <p class="text-[10px] sm:text-sm font-semibold text-slate-400">دعم مباشر وموثوقية القطع</p>
         </article>
       </div>
     </section>
 
-    <section id="about" class="section-reveal scroll-mt-28 px-4 py-20 sm:px-6 lg:px-8">
+    <section id="about" class="section-reveal scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-7xl">
-        <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
-            <p class="text-sm font-black uppercase tracking-[0.24em] text-emeraldTech">من نحن</p>
-            <h2 class="mt-4 text-3xl font-black leading-tight text-corporate sm:text-4xl">
+            <p class="text-xs font-black uppercase tracking-[0.2em] text-emeraldTech">من نحن</p>
+            <h2 class="mt-3 text-2xl font-black leading-snug text-corporate sm:text-4xl">
               خبرة بدأت عام 1990م وتطورت إلى منظومة صيانة شاملة
             </h2>
-            <p class="mt-6 text-lg font-medium leading-9 text-slate-600">
+            <p class="mt-4 text-base font-medium leading-7 text-slate-600 sm:text-lg sm:leading-8">
               تأسست شركة بيت الأخوة المحدودة لصيانة السيارات عام 1990م لتقديم حلول متكاملة وشاملة في صيانة السيارات، تبدأ من استقبال المركبة وتشخيص احتياجها بدقة، مروراً بتنفيذ أعمال الصيانة والبرمجة والإصلاح، وصولاً إلى التسليم بثقة ووضوح.
-            </p>
-            <p class="mt-4 text-base font-medium leading-8 text-slate-600">
-              تعمل الشركة بروح مهنية تجمع بين الخبرة الفنية الطويلة، الأجهزة الحديثة، وحرص دائم على راحة العميل ورضاه في كل مرحلة من مراحل الخدمة.
             </p>
           </div>
 
-          <div class="grid gap-5">
-            <article class="rounded-md border border-slate-200 bg-white p-7 shadow-sm">
-              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-corporate text-white">
-                <svg class="h-6 w-6" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <div class="grid gap-4">
+            <article class="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+              <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-corporate text-white">
+                <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24" fill="none">
                   <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="2" />
                   <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2" />
                 </svg>
               </div>
-              <h3 class="text-xl font-black text-slate-950">الرؤية</h3>
-              <p class="mt-3 text-base font-medium leading-8 text-slate-600">
+              <h3 class="text-lg font-black text-slate-950">الرؤية</h3>
+              <p class="mt-2 text-sm font-medium leading-6 text-slate-600">
                 أن نكون الخيار الأول والوجهة الموثوقة في صيانة السيارات بجودة عالية وتقنيات حديثة.
               </p>
             </article>
 
-            <article class="rounded-md border border-slate-200 bg-white p-7 shadow-sm">
-              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-emeraldTech text-white">
-                <svg class="h-6 w-6" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+            <article class="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+              <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-emeraldTech text-white">
+                <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24" fill="none">
                   <path d="M12 3 4 7v6c0 4.5 3.2 7.5 8 8 4.8-.5 8-3.5 8-8V7l-8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
                   <path d="m8.5 12 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </div>
-              <h3 class="text-xl font-black text-slate-950">الرسالة</h3>
-              <p class="mt-3 text-base font-medium leading-8 text-slate-600">
+              <h3 class="text-lg font-black text-slate-950">الرسالة</h3>
+              <p class="mt-2 text-sm font-medium leading-6 text-slate-600">
                 تقديم خدمات صيانة موثوقة وشاملة، بفريق محترف وأجهزة متقدمة لضمان رضا وثقة العميل.
               </p>
             </article>
 
-            <article class="rounded-md border border-slate-200 bg-white p-7 shadow-sm">
-              <h3 class="text-xl font-black text-slate-950">قيمنا</h3>
-              <div class="mt-5 flex flex-wrap gap-3" aria-label="قيم الشركة">
-                <button type="button" class="value-tag focus-ring rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-extrabold text-slate-700">الجودة</button>
-                <button type="button" class="value-tag focus-ring rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-extrabold text-slate-700">الثقة</button>
-                <button type="button" class="value-tag focus-ring rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-extrabold text-slate-700">الابتكار</button>
-                <button type="button" class="value-tag focus-ring rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-extrabold text-slate-700">الراحة</button>
-                <button type="button" class="value-tag focus-ring rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-extrabold text-slate-700">رضا العميل</button>
-                <button type="button" class="value-tag focus-ring rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-extrabold text-slate-700">الالتزام</button>
+            <article class="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+              <h3 class="text-lg font-black text-slate-950">قيمنا</h3>
+              <div class="mt-4 flex flex-wrap gap-2" aria-label="قيم الشركة">
+                <button type="button" class="value-tag rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-extrabold text-slate-700">الجودة</button>
+                <button type="button" class="value-tag rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-extrabold text-slate-700">الثقة</button>
+                <button type="button" class="value-tag rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-extrabold text-slate-700">الابتكار</button>
+                <button type="button" class="value-tag rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-extrabold text-slate-700">الراحة</button>
+                <button type="button" class="value-tag rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-extrabold text-slate-700">رضا العميل</button>
+                <button type="button" class="value-tag rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-extrabold text-slate-700">الالتزام</button>
               </div>
             </article>
           </div>
@@ -395,51 +348,51 @@
       </div>
     </section>
 
-    <section id="services" class="scroll-mt-28 bg-white px-4 py-20 sm:px-6 lg:px-8">
+    <section id="services" class="scroll-mt-24 bg-white px-4 py-16 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-7xl">
         <div class="section-reveal mx-auto max-w-3xl text-center">
-          <p class="text-sm font-black uppercase tracking-[0.24em] text-emeraldTech">خدماتنا</p>
-          <h2 class="mt-4 text-3xl font-black leading-tight text-corporate sm:text-4xl">
+          <p class="text-sm font-black uppercase tracking-[0.2em] text-emeraldTech">خدماتنا</p>
+          <h2 class="mt-3 text-2xl font-black leading-tight text-corporate sm:text-4xl">
             صيانة احترافية تغطي الكهرباء، الميكانيكا، السمكرة والدهان
           </h2>
-          <p class="mt-5 text-base font-medium leading-8 text-slate-600">
+          <p class="mt-4 text-sm sm:text-base font-medium leading-7 text-slate-500">
             منظومة خدمات مصممة لتقديم تشخيص دقيق، تنفيذ موثوق، وتسليم سريع بمعايير تليق بالعملاء والأفراد والجهات المؤسسية.
           </p>
         </div>
 
-        <div class="mt-12 grid gap-6 lg:grid-cols-3">
-          <article class="service-card section-reveal rounded-md border border-slate-200 border-t-[5px] border-t-emeraldTech bg-white p-7 shadow-sm">
-            <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-emeraldTech/10 text-emeraldTech">
-              <svg class="h-7 w-7" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          <article class="service-card section-reveal rounded-md border border-slate-200 border-t-[5px] border-t-emeraldTech bg-white p-6 shadow-sm">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-emeraldTech/10 text-emeraldTech">
+              <svg class="h-6 w-6" aria-hidden="true" viewBox="0 0 24 24" fill="none">
                 <path d="M13 2 4 14h7l-1 8 10-13h-7l0-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
               </svg>
             </div>
-            <h3 class="text-2xl font-black text-slate-950">الكهرباء والبرمجة</h3>
-            <p class="mt-4 text-base font-medium leading-8 text-slate-600">
+            <h3 class="text-xl font-black text-slate-950">الكهرباء والبرمجة</h3>
+            <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
               تشخيص دقيق للأعطال، برمجة الأداء والعزم واستجابة الدعسة وتحسين استهلاك الوقود، برمجة الديزل ومعالجة أنظمة البيئة، البرمجة عن بعد عالمياً، والاستشارات الفنية.
             </p>
           </article>
 
-          <article class="service-card section-reveal rounded-md border border-slate-200 border-t-[5px] border-t-corporate bg-white p-7 shadow-sm">
-            <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-corporate/10 text-corporate">
-              <svg class="h-7 w-7" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <article class="service-card section-reveal rounded-md border border-slate-200 border-t-[5px] border-t-corporate bg-white p-6 shadow-sm">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-corporate/10 text-corporate">
+              <svg class="h-6 w-6" aria-hidden="true" viewBox="0 0 24 24" fill="none">
                 <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-3-3 2.5-2.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
               </svg>
             </div>
-            <h3 class="text-2xl font-black text-slate-950">الميكانيكا والتوضيب</h3>
-            <p class="mt-4 text-base font-medium leading-8 text-slate-600">
+            <h3 class="text-xl font-black text-slate-950">الميكانيكا والتوضيب</h3>
+            <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
               توضيب المحركات والقيرات، صيانة وإصلاح الأعطال الميكانيكية الشاملة، الفحص الشامل بأحدث المعدات.
             </p>
           </article>
 
-          <article class="service-card section-reveal rounded-md border border-slate-200 border-t-[5px] border-t-[#d39b2a] bg-white p-7 shadow-sm">
-            <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-md bg-[#d39b2a]/10 text-[#a97513]">
-              <svg class="h-7 w-7" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <article class="service-card section-reveal rounded-md border border-slate-200 border-t-[5px] border-t-[#d39b2a] bg-white p-6 shadow-sm">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-[#d39b2a]/10 text-[#a97513]">
+              <svg class="h-6 w-6" aria-hidden="true" viewBox="0 0 24 24" fill="none">
                 <path d="M4 17h16M6 17l1.2-5.5A4.5 4.5 0 0 1 11.6 8h.8a4.5 4.5 0 0 1 4.4 3.5L18 17M7 17v2M17 17v2M8.5 13h1M14.5 13h1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </div>
-            <h3 class="text-2xl font-black text-slate-950">السمكرة والدهان</h3>
-            <p class="mt-4 text-base font-medium leading-8 text-slate-600">
+            <h3 class="text-xl font-black text-slate-950">السمكرة والدهان</h3>
+            <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
               إصلاح الصدمات والخدوش، تعديل الهيكل الخارجي، أعمال الدهان المطابقة تماماً للون الأصلي داخل أفران حرارية مخصصة.
             </p>
           </article>
@@ -447,214 +400,192 @@
       </div>
     </section>
 
-    <section id="technology" class="technical-grid scroll-mt-28 px-4 py-20 sm:px-6 lg:px-8">
+    <section id="technology" class="technical-grid scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-7xl">
-        <div class="section-reveal grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <div class="section-reveal grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
-            <p class="text-sm font-black uppercase tracking-[0.24em] text-emeraldTech">التميز التقني</p>
-            <h2 class="mt-4 text-3xl font-black leading-tight text-corporate sm:text-4xl">
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-emeraldTech">التميز التقني</p>
+            <h2 class="mt-3 text-2xl font-black leading-tight text-corporate sm:text-4xl">
               أجهزة تشخيص وبرمجة متقدمة لقرارات صيانة أكثر دقة
             </h2>
-            <p class="mt-5 text-base font-medium leading-8 text-slate-600">
+            <p class="mt-4 text-sm sm:text-base font-medium leading-7 text-slate-600">
               تعتمد الشركة على منظومة أدوات احترافية تجمع بين أجهزة برمجة الأداء، تشخيص الأعطال، حلول المفاتيح والدوائر، وأدوات الوكالات الأصلية لماركات عالمية.
             </p>
           </div>
 
-          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4" aria-label="الأجهزة والأدوات التقنية">
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">Kess3</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">Flex</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">HPTuner</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">VVDI Prog</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">OBD Smart</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">GPROG</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">Autel</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">Launch</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">Thinktool</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">JAD</span>
-            <span class="tool-badge rounded-md border border-emeraldTech/30 bg-emeraldTech px-4 py-5 text-center text-sm font-black text-white shadow-glow sm:col-span-2">
+          <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4" aria-label="الأجهزة والأدوات التقنية">
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">Kess3</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">Flex</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">HPTuner</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">VVDI Prog</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">OBD Smart</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">GPROG</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">Autel</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">Launch</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">Thinktool</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">JAD</span>
+            <span class="tool-badge rounded-md border border-emeraldTech/30 bg-emeraldTech px-2.5 py-4 text-center text-xs sm:text-sm font-black text-white shadow-glow col-span-2">
               Original Agency Tools
             </span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">Toyota</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">GMC</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">Ford</span>
-            <span class="tool-badge rounded-md border border-slate-200 bg-white px-4 py-5 text-center text-sm font-black text-corporate shadow-sm">Mazda</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">Toyota</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">GMC</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">Ford</span>
+            <span class="tool-badge rounded-md border border-slate-200 bg-white px-2.5 py-4 text-center text-xs sm:text-sm font-black text-corporate shadow-sm">Mazda</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="gallery" class="scroll-mt-28 bg-white px-4 py-20 sm:px-6 lg:px-8">
+    <section id="gallery" class="scroll-mt-24 bg-white px-4 py-16 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-7xl">
-        <div class="section-reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div class="section-reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div class="max-w-3xl">
-            <p class="text-sm font-black uppercase tracking-[0.24em] text-emeraldTech">معرض الأعمال</p>
-            <h2 class="mt-4 text-3xl font-black leading-tight text-corporate sm:text-4xl">
+            <p class="text-xs font-black uppercase tracking-[0.2%em] text-emeraldTech">معرض الأعمال</p>
+            <h2 class="mt-3 text-2xl font-black leading-tight text-corporate sm:text-4xl">
               نماذج من أعمال الصيانة والإصلاح داخل المراكز
             </h2>
           </div>
-          <div class="flex flex-wrap gap-2" role="tablist" aria-label="تصفية معرض الأعمال">
-            <button type="button" class="filter-button is-active focus-ring rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-extrabold text-slate-700 transition" data-filter="all" role="tab" aria-selected="true">الكل</button>
-            <button type="button" class="filter-button focus-ring rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-extrabold text-slate-700 transition" data-filter="mechanic" role="tab" aria-selected="false">ميكانيكا وتوضيب</button>
-            <button type="button" class="filter-button focus-ring rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-extrabold text-slate-700 transition" data-filter="bodypaint" role="tab" aria-selected="false">سمكرة ودهان</button>
-            <button type="button" class="filter-button focus-ring rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-extrabold text-slate-700 transition" data-filter="general" role="tab" aria-selected="false">صيانة عامة</button>
+          <div class="flex flex-wrap gap-1.5" role="tablist" aria-label="تصفية معرض الأعمال">
+            <button type="button" class="filter-button is-active focus-ring rounded-md border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-extrabold text-slate-700 transition" data-filter="all" role="tab" aria-selected="true">الكل</button>
+            <button type="button" class="filter-button focus-ring rounded-md border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-extrabold text-slate-700 transition" data-filter="mechanic" role="tab" aria-selected="false">ميكانيكا</button>
+            <button type="button" class="filter-button focus-ring rounded-md border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-extrabold text-slate-700 transition" data-filter="bodypaint" role="tab" aria-selected="false">سمكرة</button>
+            <button type="button" class="filter-button focus-ring rounded-md border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-extrabold text-slate-700 transition" data-filter="general" role="tab" aria-selected="false">صيانة عامة</button>
           </div>
         </div>
 
-        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <figure class="gallery-card section-reveal overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm" data-category="mechanic">
             <img
               src="gallery1.jpg"
               alt="توضيب قير محترف"
-              class="h-64 w-full object-cover transition duration-500 hover:scale-105"
+              class="h-48 sm:h-64 w-full object-cover transition duration-500 hover:scale-105"
               loading="lazy"
               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1000&q=80';"
             />
-            <figcaption class="p-5 text-base font-black text-slate-900">توضيب قير محترف</figcaption>
+            <figcaption class="p-4 text-sm font-black text-slate-900">توضيب قير محترف</figcaption>
           </figure>
 
           <figure class="gallery-card section-reveal overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm" data-category="mechanic">
             <img
               src="gallery2.jpg"
               alt="توضيب ماكينات ومحركات"
-              class="h-64 w-full object-cover transition duration-500 hover:scale-105"
+              class="h-48 sm:h-64 w-full object-cover transition duration-500 hover:scale-105"
               loading="lazy"
               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1000&q=80';"
             />
-            <figcaption class="p-5 text-base font-black text-slate-900">توضيب ماكينات ومحركات</figcaption>
+            <figcaption class="p-4 text-sm font-black text-slate-900">توضيب ماكينات ومحركات</figcaption>
           </figure>
 
           <figure class="gallery-card section-reveal overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm" data-category="bodypaint">
             <img
               src="gallery3.jpg"
               alt="رش بوية فرن حراري تجميلي"
-              class="h-64 w-full object-cover transition duration-500 hover:scale-105"
+              class="h-48 sm:h-64 w-full object-cover transition duration-500 hover:scale-105"
               loading="lazy"
               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1000&q=80';"
             />
-            <figcaption class="p-5 text-base font-black text-slate-900">رش بوية فرن حراري تجميلي</figcaption>
+            <figcaption class="p-4 text-sm font-black text-slate-900">رش بوية فرن حراري تجميلي</figcaption>
           </figure>
 
           <figure class="gallery-card section-reveal overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm" data-category="general">
             <img
               src="gallery4.jpg"
               alt="صيانة عضلات المركبة وتصفية شاملة"
-              class="h-64 w-full object-cover transition duration-500 hover:scale-105"
+              class="h-48 sm:h-64 w-full object-cover transition duration-500 hover:scale-105"
               loading="lazy"
               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80';"
             />
-            <figcaption class="p-5 text-base font-black text-slate-900">صيانة عضلات المركبة وتصفية شاملة</figcaption>
+            <figcaption class="p-4 text-sm font-black text-slate-900">صيانة عضلات المركبة وتصفية شاملة</figcaption>
           </figure>
 
           <figure class="gallery-card section-reveal overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm" data-category="general">
             <img
               src="gallery5.jpg"
               alt="إصلاح وصيانة دوائر التكييف"
-              class="h-64 w-full object-cover transition duration-500 hover:scale-105"
+              class="h-48 sm:h-64 w-full object-cover transition duration-500 hover:scale-105"
               loading="lazy"
               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1000&q=80';"
             />
-            <figcaption class="p-5 text-base font-black text-slate-900">إصلاح وصيانة دوائر التكييف</figcaption>
+            <figcaption class="p-4 text-sm font-black text-slate-900">إصلاح وصيانة دوائر التكييف</figcaption>
           </figure>
 
           <figure class="gallery-card section-reveal overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm" data-category="general">
             <img
               src="gallery6.jpg"
               alt="تجهيزات مراكز الصيانة من الداخل"
-              class="h-64 w-full object-cover transition duration-500 hover:scale-105"
+              class="h-48 sm:h-64 w-full object-cover transition duration-500 hover:scale-105"
               loading="lazy"
               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1000&q=80';"
             />
-            <figcaption class="p-5 text-base font-black text-slate-900">تجهيزات مراكز الصيانة من الداخل</figcaption>
+            <figcaption class="p-4 text-sm font-black text-slate-900">تجهيزات مراكز الصيانة من الداخل</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <section id="partners" class="scroll-mt-28 px-4 py-20 sm:px-6 lg:px-8">
+    <section id="partners" class="scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-7xl">
         <div class="section-reveal mx-auto max-w-3xl text-center">
-          <p class="text-sm font-black uppercase tracking-[0.24em] text-emeraldTech">شركاؤنا</p>
-          <h2 class="mt-4 text-3xl font-black leading-tight text-corporate sm:text-4xl">
+          <p class="text-sm font-black uppercase tracking-[0.2em] text-emeraldTech">شركاؤنا</p>
+          <h2 class="mt-3 text-2xl font-black leading-tight text-corporate sm:text-4xl">
             ثقة جهات حكومية وشركات كبرى
           </h2>
         </div>
 
-        <div class="partner-ribbon section-reveal mt-10 rounded-md border border-slate-200 bg-white py-5 shadow-sm" aria-label="شريط شركاء الشركة">
-          <div class="partner-track flex gap-4 px-4">
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">وزارة الدفاع</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">وزارة الصحة</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">أمانة منطقة الرياض</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">هيئة الهلال الأحمر السعودي</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">أرامكو السعودية</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">الشركة السعودية للكهرباء</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">شركة المياه الوطنية</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">الخطوط الحديدية السعودية SAR</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">مجموعة stc</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">شركة موبايلي</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">أسواق العثيم</span>
-            <span class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">لافيرن LAVERNE</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">وزارة الدفاع</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">وزارة الصحة</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">أمانة منطقة الرياض</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">هيئة الهلال الأحمر السعودي</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">أرامكو السعودية</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">الشركة السعودية للكهرباء</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">شركة المياه الوطنية</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">الخطوط الحديدية السعودية SAR</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">مجموعة stc</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">شركة موبايلي</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">أسواق العثيم</span>
-            <span aria-hidden="true" class="rounded-md border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-black text-slate-700">لافيرن LAVERNE</span>
+        <div class="partner-ribbon section-reveal mt-8 rounded-md border border-slate-150 bg-white py-4 shadow-sm" aria-label="شريط شركاء الشركة">
+          <div class="partner-track flex gap-3 px-2">
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">وزارة الدفاع</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">وزارة الصحة</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">أمانة منطقة الرياض</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">هيئة الهلال الأحمر السعودي</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">أرامكو السعودية</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">الشركة السعودية للكهرباء</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">شركة المياه الوطنية</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">الخطوط الحديدية السعودية SAR</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">مجموعة stc</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">شركة موبايلي</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">أسواق العثيم</span>
+            <span class="rounded-md border border-slate-200 bg-slate-50/60 px-5 py-3 text-xs sm:text-sm font-black text-slate-600">لافيرن LAVERNE</span>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-corporate px-4 py-14 text-white sm:px-6 lg:px-8">
-    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr_0.8fr]">
+  <footer class="bg-corporate px-4 py-12 text-white sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.2fr_0.9fr_0.9fr]">
       <section aria-labelledby="footer-company">
-        <h2 id="footer-company" class="text-2xl font-black">شركة بيت الأخوة المحدودة لصيانة السيارات</h2>
-        <p class="mt-5 max-w-2xl text-sm font-semibold leading-8 text-white/76">
+        <h2 id="footer-company" class="text-xl sm:text-2xl font-black">شركة بيت الأخوة المحدودة لصيانة السيارات</h2>
+        <p class="mt-4 max-w-2xl text-xs sm:text-sm font-semibold leading-6 sm:leading-8 text-white/70">
           شركة ذات مسؤولية محدودة برأس مال قدره 1,000,000 ريال سعودي، ومسجلة رسمياً بشهادة ضريبة القيمة المضافة، وغرفة الرياض، والعنوان الوطني.
         </p>
-        <p class="mt-4 text-sm font-semibold leading-7 text-white/76">
+        <p class="mt-3 text-xs sm:text-sm font-semibold leading-6 text-white/70">
           العنوان: الرياض - النسيم الغربي - شارع عبدالله بن عمير 14230.
         </p>
       </section>
 
       <section aria-labelledby="footer-contact">
-        <h2 id="footer-contact" class="text-lg font-black">بيانات التواصل</h2>
-        <div class="mt-5 grid gap-3 text-sm font-bold text-white/82">
-          <a class="focus-ring rounded-md transition hover:text-white" href="tel:0507497683">الهاتف: 0507497683</a>
-          <a class="focus-ring rounded-md transition hover:text-white" href="mailto:Info@baytalkhwa.com">البريد الإلكتروني: Info@baytalkhwa.com</a>
+        <h2 id="footer-contact" class="text-base sm:text-lg font-black">بيانات التواصل</h2>
+        <div class="mt-4 grid gap-2 text-xs sm:text-sm font-bold text-white/80">
+          <a class="transition hover:text-white" href="tel:0507497683">الهاتف: 0507497683</a>
+          <a class="transition hover:text-white" href="mailto:Info@baytalkhwa.com">البريد الإلكتروني: Info@baytalkhwa.com</a>
         </div>
       </section>
 
       <section aria-labelledby="footer-social">
-        <h2 id="footer-social" class="text-lg font-black">تابعنا</h2>
-        <div class="mt-5 flex flex-wrap gap-3">
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="focus-ring rounded-md border border-white/20 px-4 py-3 text-sm font-extrabold text-white/86 transition hover:-translate-y-0.5 hover:bg-white hover:text-corporate"
-          >
+        <h2 id="footer-social" class="text-base sm:text-lg font-black">تابعنا</h2>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="border border-white/20 px-4 py-2.5 text-xs font-extrabold text-white/80 transition hover:bg-white hover:text-corporate rounded-md">
             Instagram
           </a>
-          <a
-            href="https://www.tiktok.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="focus-ring rounded-md border border-white/20 px-4 py-3 text-sm font-extrabold text-white/86 transition hover:-translate-y-0.5 hover:bg-white hover:text-corporate"
-          >
+          <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="border border-white/20 px-4 py-2.5 text-xs font-extrabold text-white/80 transition hover:bg-white hover:text-corporate rounded-md">
             TikTok
           </a>
         </div>
       </section>
     </div>
 
-    <div class="mx-auto mt-10 max-w-7xl border-t border-white/14 pt-6 text-center text-sm font-semibold text-white/66">
+    <div class="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-5 text-center text-xs font-semibold text-white/60">
       © 2026 جميع الحقوق محفوظة لشركة بيت الأخوة
     </div>
   </footer>
@@ -687,7 +618,6 @@
         });
       });
 
-      // Reveals content once so the page feels polished without fighting user motion preferences.
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -695,23 +625,21 @@
             revealObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.14 });
+      }, { threshold: 0.08 });
 
       document.querySelectorAll('.section-reveal').forEach((item) => revealObserver.observe(item));
 
       const navObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-
           navLinks.forEach((link) => {
             link.classList.toggle('is-active', link.getAttribute('href') === `#${entry.target.id}`);
           });
         });
-      }, { rootMargin: '-38% 0px -55% 0px' });
+      }, { rootMargin: '-35% 0px -50% 0px' });
 
       sections.forEach((section) => navObserver.observe(section));
 
-      // Counter animation starts only when the stats block enters view.
       const counters = [...document.querySelectorAll('.counter')];
       const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -720,7 +648,7 @@
           counters.forEach((counter) => {
             const target = Number(counter.dataset.target);
             const prefix = counter.dataset.prefix || '';
-            const duration = 1400;
+            const duration = 1200;
             const start = performance.now();
 
             const tick = (now) => {
@@ -732,13 +660,11 @@
                 requestAnimationFrame(tick);
               }
             };
-
             requestAnimationFrame(tick);
           });
-
           counterObserver.disconnect();
         });
-      }, { threshold: 0.35 });
+      }, { threshold: 0.2 });
 
       counterObserver.observe(document.getElementById('stats'));
 
@@ -747,12 +673,11 @@
       });
 
       const filterButtons = [...document.querySelectorAll('.filter-button')];
-      const galleryCards = [...document.querySelectorAll('.gallery-card')];
+      const galleryCards = [...document.querySelectorAll('.gallery-card');
 
       filterButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const filter = button.dataset.filter;
-
           filterButtons.forEach((item) => {
             const isActive = item === button;
             item.classList.toggle('is-active', isActive);
